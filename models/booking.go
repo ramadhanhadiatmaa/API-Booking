@@ -11,6 +11,7 @@ type Booking struct {
 	Rm		  int     `json:"rm"`
 	Bayar     string  `gorm:"type:varchar(250)" json:"bayar"`
 	Nama      string  `gorm:"type:varchar(250)" json:"nama"`
+	Poli      string  `gorm:"type:varchar(250)" json:"poli"`
 	Tanggal   int  	  `json:"tanggal"`
 	Bulan     string  `gorm:"type:varchar(250)" json:"bulan"`
 	Tahun     int     `json:"tahun"`
