@@ -25,7 +25,7 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ vars.CONTAINER_NAME }}:v1.0
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ vars.CONTAINER_NAME }}:v1.1
 
   deployment:
     needs: build
@@ -42,8 +42,8 @@ jobs:
           script: |
             whoami
             docker stop ${{ vars.CONTAINER_NAME }} || true && docker rm ${{ vars.CONTAINER_NAME }} || true
-            docker pull ${{ vars.IMAGE_NAME }}:v1.0
+            docker pull ${{ vars.IMAGE_NAME }}:v1.1
 
             docker run --restart always -d -p 8035:8035 --name ${{ vars.CONTAINER_NAME }} \
             -v /var/www/elisabethapi/.env:/app/.env \
-            ${{ vars.IMAGE_NAME }}:v1.0
+            ${{ vars.IMAGE_NAME }}:v1.1
