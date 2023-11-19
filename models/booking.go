@@ -5,7 +5,7 @@ import (
 )
 
 type Booking struct {
-	Id        string  `gorm:"primaryKey;" json:"id"`
+	Id        string  `gorm:"type:varchar(300); primaryKey" json:"id"`
 	Ktp       string  `gorm:"type:varchar(250)" json:"ktp"`
 	Bpjs      string  `gorm:"type:varchar(250)" json:"bpjs"`
 	Rm		  string  `json:"rm"`
