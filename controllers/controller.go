@@ -60,10 +60,9 @@ func Create(c *fiber.Ctx) error {
 	var unixTime = int(unix)
 
 	var nomor = booking.Ktp
-	var ktp = strconv.Itoa(nomor)
 	var uniq = strconv.Itoa(unixTime)
 
-	booking.Id = ktp + uniq
+	booking.Id = nomor + uniq
 
 	if err := models.DB.Create(&booking).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

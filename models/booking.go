@@ -6,8 +6,8 @@ import (
 
 type Booking struct {
 	Id        string  `gorm:"primaryKey;" json:"id"`
-	Ktp       int     `json:"ktp"`
-	Bpjs      int     `json:"bpjs"`
+	Ktp       string  `gorm:"type:varchar(250)" json:"ktp"`
+	Bpjs      string  `gorm:"type:varchar(250)" json:"bpjs"`
 	Rm		  string  `json:"rm"`
 	Bayar     string  `gorm:"type:varchar(100)" json:"bayar"`
 	Nama      string  `gorm:"type:varchar(250)" json:"nama"`
