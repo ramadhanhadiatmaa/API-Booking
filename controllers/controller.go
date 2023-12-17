@@ -55,14 +55,16 @@ func Create(c *fiber.Ctx) error {
 	booking.Created = time.Now()
 	booking.Updated = time.Now()
 
-	var current = time.Now()
-	var unix = current.Unix()
-	var unixTime = int(unix)
-
 	var nomor = booking.Ktp
-	var uniq = strconv.Itoa(unixTime)
 
-	booking.Id = nomor + uniq
+	var noTanggal = booking.Tanggal
+	var bulan = booking.Bulan
+	var noTahun = booking.Tahun
+
+	var tanggal = strconv.Itoa(noTanggal)
+	var tahun = strconv.Itoa(noTahun)
+
+	booking.Id = nomor + tanggal + bulan + tahun
 
 	if err := models.DB.Create(&booking).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
